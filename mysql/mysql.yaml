@@ -1,0 +1,29 @@
+----
+version: '2.3'
+# ---------------------------------------------------------------------------
+# Copyright 2024 mwn-san
+# Author: Mohammad Wildan Nuryulda
+# Email: nuryulda@gmail.com
+# GitHub: https://github.com/mwn-san
+# ---------------------------------------------------------------------------
+
+services:
+  mysql:
+    image: mysql/mysql-server
+    container_name: mysql
+    restart: unless-stopped
+    network_mode: "host"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "5"
+    volumes:
+      - /etc/mysql/data:/etc/mysql/conf.d
+      - /etc/mysql/data/logs:/logs
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: MWN
+      MYSQL_USER: MWN
+      MYSQL_PASSWORD: password
+
