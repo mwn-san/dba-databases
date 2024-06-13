@@ -26,6 +26,11 @@ services:
     volumes:
       - /home/oracle/data:/u01/app/oracle
       - /home/oracle/archive_log:/opt/oracle/archive_log
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "5"
     ulimits:
       nofile:
         soft: 1024
